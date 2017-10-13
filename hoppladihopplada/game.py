@@ -113,7 +113,7 @@ class Game:
     def update_selected_dice(self, indices):
         selected_dice = [
             self.current_roll.pop(i)
-            for i in sorted(indices, reverse=True)
+            for i in sorted(set(indices), reverse=True)
         ]
         selected_dice.sort(key=lambda d: d.value)
 
