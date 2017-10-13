@@ -1,10 +1,9 @@
 from .game import Game
 from .players import TerminalPlayer
-
-
 from .utils import confirm
 
-if __name__ == '__main__':
+
+def main():
     more = True
     players = []
     while more:
@@ -14,3 +13,7 @@ if __name__ == '__main__':
 
     g = Game(players)
     g.start()
+
+
+if __name__ == '__main__':
+    main()
