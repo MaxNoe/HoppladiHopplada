@@ -62,7 +62,7 @@ class Game:
                     self.store_bunnies()
                     available_dice = self.get_available_dice()
                 else:
-                    self.update_points(player)
+                    player.points += self.evaluate_points()
                     self.reset_dice()
                     break
 
@@ -101,8 +101,8 @@ class Game:
 
         max_points = 0
         while max_points < 333:
-            print_points_table(self.players)
             for player in self.players:
+                print_points_table(self.players)
                 print(2 * '\n')
                 print(f'{f"  {player.name}  ":#^40}')
                 self.turn(player)
