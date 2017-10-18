@@ -32,22 +32,30 @@ class TerminalPlayer(Player):
         return indices
 
     def decide_upgrade_hutch(self, game):
-        return confirm('Do yo want to upgrade your Hutch?')
+        answer = confirm('Do yo want to upgrade your Hutch?')
+        print()
+        return answer
 
     def decide_rolling_again(self, game):
         print(game)
-        return confirm('Do you want to roll again?')
+        answer = confirm('Do you want to roll again?')
+        print()
+        return answer
 
     def decide_keep_last_roll(self, game):
         print(game)
-        return confirm('Do you want to keep the last roll?')
+        answer = confirm('Do you want to keep the last roll?')
+        print()
+        return answer
 
     def notify_carrots(self, game):
         print(game)
         print('You rolled only carrots, lucky you!')
+        print()
 
     def notify_lost(self, game):
         print(game)
         print()
         print('Düdümm, you lost')
+        print()
         print()

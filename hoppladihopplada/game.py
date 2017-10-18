@@ -90,7 +90,6 @@ class Game:
                         break
 
             roll_again = player.decide_rolling_again(self)
-            print()
 
         player.points += self.evaluate_points()
 
@@ -132,20 +131,26 @@ class Game:
             self.bunny_dice.append(selected_dice.pop())
 
     def __repr__(self):
-
         s = ''
-        s += 'Bunnies:   {}, Hutch: {}, Carrots: {}, Points: {}'.format(
-            self.n_bunnies, self.n_hutch_dice + 1,
-            self.n_carrot_dice, self.evaluate_points()
+        s += 'Bunnies: {}, Points: {}\n'.format(
+            self.n_bunnies, self.evaluate_points()
         )
+        if self.n_carrot_dice > 0:
+            s += '\nCarrot Dice:'
+            for i in range(self.n_carrot_dice):
+                s += ' {0.value}'.format(Dice.CARROT)
+        if self.n_hutch_dice > 0:
+            s += '\nHutch Dice: '
+            for i in range(self.n_hutch_dice):
+                s += ' {0.value}'.format(HUTCH_DICE[i])
         if self.bunny_dice:
-            s += '\nBunny Dice: {}'.format(', '.join(
+            s += '\nBunny Dice:  {}'.format(', '.join(
                 b.value
                 if not isinstance(b, tuple) else '({0.value} {1.value})'.format(*b)
                 for b in self.bunny_dice
             ))
         if self.current_roll is not None:
-            s += '\nDice:       '
+            s += '\nDice:        '
             s += ', '.join(
                 '{}[{}]'.format(d.value, i)
                 for i, d in enumerate(self.current_roll)
